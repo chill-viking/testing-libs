@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaInqTest.NUnit", "SpaInqTest.NUnit\SpaInqTest.NUnit.csproj", "{ED8FE041-B77C-41BD-AC6D-4194B0C994A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.SpaInqTest.NUnit", "Test.SpaInqTest.NUnit\Test.SpaInqTest.NUnit.csproj", "{77482575-D2B5-413A-8110-D6B3F2491839}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED8FE041-B77C-41BD-AC6D-4194B0C994A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED8FE041-B77C-41BD-AC6D-4194B0C994A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED8FE041-B77C-41BD-AC6D-4194B0C994A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED8FE041-B77C-41BD-AC6D-4194B0C994A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77482575-D2B5-413A-8110-D6B3F2491839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77482575-D2B5-413A-8110-D6B3F2491839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77482575-D2B5-413A-8110-D6B3F2491839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77482575-D2B5-413A-8110-D6B3F2491839}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
