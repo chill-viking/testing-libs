@@ -4,12 +4,12 @@ namespace Test.SpaInqTest.NUnit;
 
 public class Base
 {
-    public string Hello { get; set; }
+    public string Hello { get; set; } = "Hello";
 }
 
 public class Child : Base
 {
-    public string World { get; set; }
+    public string World { get; set; } = "World";
 }
 
 public class TypeAssertsTests
