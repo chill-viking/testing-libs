@@ -351,3 +351,4 @@ MigrationBackup/
 
 # Rider files
 .idea/
+coverage.xml
