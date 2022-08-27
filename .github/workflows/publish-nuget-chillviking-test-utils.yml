@@ -1,8 +1,7 @@
 name: publish ChillViking.TestUtils.NUnit
 on:
   push:
-    tags:
-    - v*
+    branches: [main]
     paths:
     - 'nuget/ChillViking.TestUtils/**'
 
@@ -10,28 +9,19 @@ jobs:
   publish:
     name: test, build, pack & publish
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: nuget/ChillViking.TestUtils
     steps:
     - name: 'Checkout'
       uses: actions/checkout@v2
 
     - name: 'Test ChillViking.TestUtils.NUnit'
-      run: dotnet test ./ChillViking.TestUtils.NUnit.Tests/ChillViking.TestUtils.NUnit.Tests.csproj
+      run: dotnet test ./nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit.Tests/ChillViking.TestUtils.NUnit.Tests.csproj
 
-    - name: 'Get Version'
-      id: version
-      uses: battila7/get-version-action@v2
-
-    - name: check version
-      run: echo ${{steps.version.outputs.version-without-v}}
-
-    # - name: publish on version change
-    #   id: publish_nuget
-    #   uses: brandedoutcast/publish-nuget@v2
-    #   with:
-    #     PROJECT_FILE_PATH: ./ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
-    #     NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-    #     VERSION_STATIC: ${{steps.version.outputs.version-without-v}}
-    #     INCLUDE_SYMBOLS: false
+    - name: publish on version change
+      id: publish_nuget
+      uses: brandedoutcast/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: ./nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        TAG_FORMAT: chill-viking-test-utils-nunit-v*
+        VERSION_REGEX: ^\s*<PackageVersion>(.*)<\/PackageVersion>\s*$
+        # VERSION_STATIC: 1.0.0-alpha.2
