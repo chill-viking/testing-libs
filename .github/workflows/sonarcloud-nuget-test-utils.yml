@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: nuget/SpaInqTest
+        working-directory: nuget/ChillViking.TestUtils
     name: Analyze ChillViking.TestUtils with SonarCloud
     steps:
       - name: Set up JDK 11
