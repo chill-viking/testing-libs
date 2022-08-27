@@ -2,7 +2,9 @@ name: publish ChillViking.TestUtils.NUnit
 on:
   push:
     tags:
-    - v*chill-viking-test-utils
+    - v*
+    paths:
+    - 'nuget/ChillViking.TestUtils/**'
 
 jobs:
   publish:
