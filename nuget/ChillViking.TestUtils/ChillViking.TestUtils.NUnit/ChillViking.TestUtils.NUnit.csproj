@@ -5,11 +5,30 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <SonarQubeTestProject>false</SonarQubeTestProject>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <RootNamespace>ChillViking.TestUtils.NUnit</RootNamespace>
+        <PackageVersion>1.0.0-alpha</PackageVersion>
+        <Description>Collection of test helper methods.</Description>
+        <Copyright>Copyright (c) Peter Jokumsen 2022</Copyright>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/chill-viking/testing-libs/tree/745097c66ce34e1c2ca98abc895344652cded7bf/nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit</RepositoryUrl>
+        <RepositoryBranch>main</RepositoryBranch>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>testing nunit test helper</PackageTags>
+        <Authors>Chill Viking</Authors>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="NUnit" Version="3.13.3"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="icon.png" Pack="true" PackagePath="\"/>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
 </Project>
