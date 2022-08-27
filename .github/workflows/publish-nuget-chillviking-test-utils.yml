@@ -2,7 +2,7 @@ name: publish ChillViking.TestUtils.NUnit
 on:
   push:
     tags:
-    - v*+chill-viking-test-utils
+    - v*chill-viking-test-utils
 
 jobs:
   publish:
