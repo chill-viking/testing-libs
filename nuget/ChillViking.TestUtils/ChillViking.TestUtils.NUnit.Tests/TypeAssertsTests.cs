@@ -1,6 +1,6 @@
-using SpaInqTest.NUnit;
+using ChillViking.TestUtils.NUnit.Asserts;
 
-namespace Test.SpaInqTest.NUnit;
+namespace ChillViking.TestUtils.NUnit.Tests;
 
 public class Base
 {
@@ -25,8 +25,11 @@ public class TypeAssertsTests
 
         value.AssertToType(out Child actual);
 
-        Assert.That(actual, Is.TypeOf<Child>());
-        Assert.That(actual.Hello, Is.EqualTo("hi"));
-        Assert.That(actual.World, Is.EqualTo("mars"));
+        Assert.Multiple(() =>
+        {
+            Assert.That(actual, Is.TypeOf<Child>());
+            Assert.That(actual.Hello, Is.EqualTo("hi"));
+            Assert.That(actual.World, Is.EqualTo("mars"));
+        });
     }
 }

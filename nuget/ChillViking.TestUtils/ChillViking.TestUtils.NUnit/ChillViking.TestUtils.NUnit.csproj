@@ -5,10 +5,11 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <SonarQubeTestProject>false</SonarQubeTestProject>
+        <RootNamespace>ChillViking.TestUtils.NUnit</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="NUnit" Version="3.13.3" />
+        <PackageReference Include="NUnit" Version="3.13.3"/>
     </ItemGroup>
 
 </Project>

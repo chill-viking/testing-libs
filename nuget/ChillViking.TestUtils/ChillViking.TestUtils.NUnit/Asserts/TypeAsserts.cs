@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using NUnit.Framework;
 
-namespace SpaInqTest.NUnit;
+namespace ChillViking.TestUtils.NUnit.Asserts;
 
 public static class TypeAsserts
 {

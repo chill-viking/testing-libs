@@ -1,14 +1,14 @@
-name: Scan SpaInqTest
+name: Scan ChillViking.TestUtils
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
     paths:
-     - 'nuget/SpaInqTest/**'
+      - 'nuget/ChillViking.TestUtils/**'
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [ opened, synchronize, reopened ]
     paths:
-     - 'nuget/SpaInqTest/**'
+      - 'nuget/ChillViking.TestUtils/**'
 
 jobs:
   test_and_report_coverage:
@@ -16,7 +16,7 @@ jobs:
     defaults:
       run:
         working-directory: nuget/SpaInqTest
-    name: Analyze SpaInqTest with SonarCloud
+    name: Analyze ChillViking.TestUtils with SonarCloud
     steps:
       - name: Set up JDK 11
         uses: actions/setup-java@v1
@@ -51,11 +51,19 @@ jobs:
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_SPAINQTEST }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_NUGET_TEST_UTILS }}
         shell: powershell
         run: |
           dotnet tool update --global dotnet-coverage
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"chill-viking-org_testing-libs-nuget-spainqtest" /o:"chill-viking-org" /d:sonar.login="${{ secrets.SONAR_TOKEN_SPAINQTEST }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+
+          .\.sonar\scanner\dotnet-sonarscanner begin `
+              /k:"chill-viking-org_testing-libs-nuget-test-utils" `
+              /o:"chill-viking-org" `
+              /d:sonar.login="${{ secrets.SONAR_TOKEN_NUGET_TEST_UTILS }}" `
+              /d:sonar.host.url="https://sonarcloud.io" `
+              /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+
           dotnet build
           dotnet-coverage collect 'dotnet test --settings coverlet.runsettings' -f xml  -o 'coverage.xml'
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN_SPAINQTEST }}"
+
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN_NUGET_TEST_UTILS }}"

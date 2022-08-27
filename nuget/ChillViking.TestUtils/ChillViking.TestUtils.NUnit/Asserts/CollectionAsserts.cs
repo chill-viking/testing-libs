@@ -1,6 +1,7 @@
+using ChillViking.TestUtils.NUnit.Exceptions;
 using NUnit.Framework;
 
-namespace SpaInqTest.NUnit;
+namespace ChillViking.TestUtils.NUnit.Asserts;
 
 public static class CollectionAsserts
 {
@@ -48,7 +49,7 @@ public static class CollectionAsserts
             var combinedMessages = string.Join(
                 Environment.NewLine,
                 exceptions.Select(e => e?.Message));
-            throw new Exception(combinedMessages);
+            throw new FailedAssertException(combinedMessages);
         }
         catch (Exception e)
         {

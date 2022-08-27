@@ -1,6 +1,6 @@
-using SpaInqTest.NUnit;
+using ChillViking.TestUtils.NUnit.Asserts;
 
-namespace Test.SpaInqTest.NUnit;
+namespace ChillViking.TestUtils.NUnit.Tests;
 
 public class CollectionAssertsTests
 {
