@@ -5,6 +5,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChillViking.TestUtils.NUnit.Tests", "ChillViking.TestUtils.NUnit.Tests\ChillViking.TestUtils.NUnit.Tests.csproj", "{77482575-D2B5-413A-8110-D6B3F2491839}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other Files", "Other Files", "{372017D5-89C6-4FB5-8364-6EC005C0E904}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipelines", "Pipelines", "{EE13835E-CC39-4FD7-BB33-FD2D5DB3BCE1}"
 	ProjectSection(SolutionItems) = preProject
