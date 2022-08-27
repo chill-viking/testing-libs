@@ -1,10 +1,7 @@
 name: publish ChillViking.TestUtils.NUnit
 on:
-  push:
-    branches: [ main ]
-    tags:
-    - 'nuget-test-utils-nunit'
-    - 'v*'
+  tags:
+  - v*+chill-viking-test-utils
 
 jobs:
   publish:
@@ -24,12 +21,14 @@ jobs:
       id: version
       uses: battila7/get-version-action@v2
 
-    - name: publish on version change
-      id: publish_nuget
-      uses: brandedoutcast/publish-nuget@v2
-      with:
-        PROJECT_FILE_PATH: ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-        BUILD_CONFIGURATION: Release
-        VERSION_STATIC: ${{steps.version.outputs.version-without-v}}
-        INCLUDE_SYMBOLS: false
+    - name: check version
+      run: echo ${{steps.version.outputs.version-without-v}}
+
+    # - name: publish on version change
+    #   id: publish_nuget
+    #   uses: brandedoutcast/publish-nuget@v2
+    #   with:
+    #     PROJECT_FILE_PATH: ./ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
+    #     NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+    #     VERSION_STATIC: ${{steps.version.outputs.version-without-v}}
+    #     INCLUDE_SYMBOLS: false
