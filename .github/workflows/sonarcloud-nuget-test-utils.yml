@@ -55,15 +55,15 @@ jobs:
         shell: powershell
         run: |
           dotnet tool update --global dotnet-coverage
-
+          
           .\.sonar\scanner\dotnet-sonarscanner begin `
               /k:"chill-viking-org_testing-libs-nuget-test-utils" `
               /o:"chill-viking-org" `
               /d:sonar.login="${{ secrets.SONAR_TOKEN_NUGET_TEST_UTILS }}" `
               /d:sonar.host.url="https://sonarcloud.io" `
               /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-
+          
           dotnet build
           dotnet-coverage collect 'dotnet test --settings coverlet.runsettings' -f xml  -o 'coverage.xml'
-
+          
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN_NUGET_TEST_UTILS }}"
