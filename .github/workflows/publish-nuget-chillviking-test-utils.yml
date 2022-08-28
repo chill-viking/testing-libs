@@ -18,7 +18,7 @@ jobs:
 
     - name: publish on version change
       id: publish_nuget
-      uses: brandedoutcast/publish-nuget@v2
+      uses: alirezanet/publish-nuget@v3.0.4
       with:
         PROJECT_FILE_PATH: ./nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
