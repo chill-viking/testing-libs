@@ -9,7 +9,7 @@
 
     <PropertyGroup>
         <RootNamespace>ChillViking.TestUtils.NUnit</RootNamespace>
-        <PackageVersion>1.0.0-alpha.3</PackageVersion>
+        <PackageVersion>1.0.0-alpha.4</PackageVersion>
         <Description>Collection of test helper methods.</Description>
         <Copyright>Copyright (c) Peter Jokumsen 2022</Copyright>
         <PackageIcon>icon.png</PackageIcon>
