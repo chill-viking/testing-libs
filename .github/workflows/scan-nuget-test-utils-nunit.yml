@@ -35,7 +35,7 @@ jobs:
       - uses: kzrnm/get-net-sdk-project-versions-action@v1
         id: get-version
         with:
-          proj-path: ./ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
+          proj-path: nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
