@@ -1,4 +1,4 @@
-name: Scan ChillViking.TestUtils
+name: Scan ChillViking.TestUtils.NUnit
 
 on:
   push:

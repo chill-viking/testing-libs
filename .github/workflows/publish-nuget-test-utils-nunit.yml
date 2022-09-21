@@ -1,4 +1,4 @@
-name: publish ChillViking.TestUtils.NUnit
+name: Publish ChillViking.TestUtils.NUnit
 on:
   push:
     branches: [ main ]
