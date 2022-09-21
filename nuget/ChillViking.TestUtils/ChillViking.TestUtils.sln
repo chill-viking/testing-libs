@@ -11,7 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other Files", "Other Files"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipelines", "Pipelines", "{EE13835E-CC39-4FD7-BB33-FD2D5DB3BCE1}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\.github\workflows\sonarcloud-nuget-test-utils.yml = ..\..\.github\workflows\sonarcloud-nuget-test-utils.yml
+		..\..\.github\workflows\publish-nuget-test-utils-nunit.yml = ..\..\.github\workflows\publish-nuget-test-utils-nunit.yml
+		..\..\.github\workflows\scan-nuget-test-utils-nunit.yml = ..\..\.github\workflows\scan-nuget-test-utils-nunit.yml
 	EndProjectSection
 EndProject
 Global

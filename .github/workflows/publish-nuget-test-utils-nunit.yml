@@ -1,0 +1,26 @@
+name: publish ChillViking.TestUtils.NUnit
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/**'
+
+jobs:
+  publish:
+    name: test, build, pack & publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+
+      - name: 'Test ChillViking.TestUtils.NUnit'
+        run: dotnet test ./nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit.Tests/ChillViking.TestUtils.NUnit.Tests.csproj
+
+      - name: publish on version change
+        id: publish_nuget
+        uses: alirezanet/publish-nuget@v3.0.4
+        with:
+          PROJECT_FILE_PATH: ./nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          TAG_FORMAT: chill-viking-test-utils-nunit-v*
+          VERSION_REGEX: ^\s*<PackageVersion>(.*)<\/PackageVersion>\s*$

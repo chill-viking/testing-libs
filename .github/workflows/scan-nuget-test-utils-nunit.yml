@@ -4,11 +4,11 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'nuget/ChillViking.TestUtils/**'
+      - 'nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/**'
   pull_request:
     types: [ opened, synchronize, reopened ]
     paths:
-      - 'nuget/ChillViking.TestUtils/**'
+      - 'nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/**'
 
 jobs:
   test_and_report_coverage:
@@ -22,19 +22,28 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.11
+
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
+
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - uses: kzrnm/get-net-sdk-project-versions-action@v1
+        id: get-version
+        with:
+          proj-path: ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
           path: ~\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
         uses: actions/cache@v1
@@ -42,28 +51,33 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
+
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_NUGET_TEST_UTILS }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_TEST_UTILS_NUNIT }}
         shell: powershell
         run: |
           dotnet tool update --global dotnet-coverage
           
           .\.sonar\scanner\dotnet-sonarscanner begin `
-              /k:"chill-viking-org_testing-libs-nuget-test-utils" `
+              /k:"chill-viking-org_testing-libs-nunit" `
               /o:"chill-viking-org" `
-              /d:sonar.login="${{ secrets.SONAR_TOKEN_NUGET_TEST_UTILS }}" `
+              /d:sonar.login="${{ secrets.SONAR_TOKEN_TEST_UTILS_NUNIT }}" `
               /d:sonar.host.url="https://sonarcloud.io" `
-              /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-          
+              /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml `
+              /v:${{ steps.get-version.outputs.package-version }}
+
           dotnet build
-          dotnet-coverage collect 'dotnet test --settings coverlet.runsettings' -f xml  -o 'coverage.xml'
-          
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN_NUGET_TEST_UTILS }}"
+          dotnet-coverage collect `
+            'dotnet test .\ChillViking.TestUtils.NUnit.Tests\ChillViking.TestUtils.NUnit.Tests.csproj --settings coverlet.runsettings' `
+            -f xml  -o 'coverage.xml'
+
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN_TEST_UTILS_NUNIT }}"
