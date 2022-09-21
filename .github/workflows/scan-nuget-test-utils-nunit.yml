@@ -3,8 +3,8 @@ name: Scan ChillViking.TestUtils.NUnit
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/**'
+  #    paths:
+  #      - 'nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/**'
   pull_request:
     types: [ opened, synchronize, reopened ]
     paths:
@@ -35,7 +35,7 @@ jobs:
       - uses: kzrnm/get-net-sdk-project-versions-action@v1
         id: get-version
         with:
-          proj-path: ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
+          proj-path: ./ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
