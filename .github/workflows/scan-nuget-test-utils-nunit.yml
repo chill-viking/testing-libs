@@ -3,8 +3,8 @@ name: Scan ChillViking.TestUtils.NUnit
 on:
   push:
     branches: [ main ]
-  #    paths:
-  #      - 'nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/**'
+    paths:
+      - 'nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/**'
   pull_request:
     types: [ opened, synchronize, reopened ]
     paths:
