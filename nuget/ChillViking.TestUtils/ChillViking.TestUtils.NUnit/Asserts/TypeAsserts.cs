@@ -34,7 +34,8 @@ public static class TypeAsserts
     {
         try
         {
-            Assert.That(actual, Is.Not.Null.And.TypeOf(typeof(TType)));
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual, Is.TypeOf(typeof(TType)));
             result = (TType) actual!;
         }
         catch (Exception e)

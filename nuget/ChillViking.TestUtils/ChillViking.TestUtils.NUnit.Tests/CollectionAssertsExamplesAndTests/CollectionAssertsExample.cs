@@ -1,17 +1,16 @@
 using ChillViking.TestUtils.NUnit.Asserts;
 
-namespace ChillViking.TestUtils.NUnit.Tests;
+namespace ChillViking.TestUtils.NUnit.Tests.CollectionAssertsExamplesAndTests;
 
-public class CollectionAssertsTests
+public class AssertCollectionExample
 {
     [Test]
-    public void AssertCollection_Passes()
+    public void AssertCollection()
     {
         var collection = new[] { "1", "2" };
 
         collection.AssertCollection(
             colValue => Assert.That(colValue, Is.EqualTo("1")),
             colValue => Assert.That(colValue, Is.EqualTo("2")));
-        Assert.Pass("No exceptions thrown");
     }
 }
