@@ -38,7 +38,7 @@ jobs:
           proj-path: nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/ChillViking.TestUtils.NUnit.csproj
 
       - name: Cache SonarCloud packages
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~\sonar\cache
           key: ${{ runner.os }}-sonar
@@ -46,7 +46,7 @@ jobs:
 
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
