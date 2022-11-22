@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: 'Test ChillViking.TestUtils.NUnit'
         run: dotnet test ./nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit.Tests/ChillViking.TestUtils.NUnit.Tests.csproj
