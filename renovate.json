@@ -15,8 +15,7 @@
     }
   ],
   "schedule": [
-    "* 17 * * 0,2,4,6"
+    "before 2am"
   ],
   "configMigration": true
-}
 }
