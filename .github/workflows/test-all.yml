@@ -1,0 +1,20 @@
+on:
+  pull_request:
+    branches: [main]
+
+name: test-all
+
+jobs:
+  run-tests:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        solution:
+          - ./nuget/ChillViking.TestUtils/ChillViking.TestUtils.sln
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+
+      - name: Test ${{ matrix.solution }}
+        run: dotnet test ${{ matrix.solution }}

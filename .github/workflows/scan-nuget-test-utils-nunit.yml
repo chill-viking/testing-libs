@@ -1,5 +1,3 @@
-name: Scan ChillViking.TestUtils.NUnit
-
 on:
   push:
     branches: [ main ]
@@ -9,6 +7,8 @@ on:
     types: [ opened, synchronize, reopened ]
     paths:
       - 'nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/**'
+
+name: Scan ChillViking.TestUtils.NUnit
 
 jobs:
   test_and_report_coverage:
@@ -66,7 +66,7 @@ jobs:
         shell: powershell
         run: |
           dotnet tool update --global dotnet-coverage
-          
+
           .\.sonar\scanner\dotnet-sonarscanner begin `
               /k:"chill-viking-org_testing-libs-nunit" `
               /o:"chill-viking-org" `
