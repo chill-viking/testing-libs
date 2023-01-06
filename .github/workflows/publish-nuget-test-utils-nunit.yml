@@ -1,9 +1,10 @@
-name: Publish ChillViking.TestUtils.NUnit
 on:
   push:
     branches: [ main ]
     paths:
       - 'nuget/ChillViking.TestUtils/ChillViking.TestUtils.NUnit/**'
+
+name: Publish ChillViking.TestUtils.NUnit
 
 jobs:
   publish:
