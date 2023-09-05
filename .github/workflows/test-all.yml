@@ -14,7 +14,7 @@ jobs:
           - ./nuget/ChillViking.TestUtils/ChillViking.TestUtils.sln
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Test ${{ matrix.solution }}
         run: dotnet test ${{ matrix.solution }}
